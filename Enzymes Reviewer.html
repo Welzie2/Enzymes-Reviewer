@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Enzymes Reviewer</title>
+<style>
+:root{--bg:#faf8f5;--sf:#fff;--tx:#26231f;--mu:#7a7268;--ac:#0f766e;--ac2:#e8f3f1;--ok:#2b8a3e;--no:#c92a2a;--ln:#e6e0d8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15130f;--sf:#1f1c17;--tx:#efeae2;--mu:#a39a8d;--ac:#4fd1c5;--ac2:#1c2e2c;--ln:#332e26}}
+:root[data-theme="dark"]{--bg:#15130f;--sf:#1f1c17;--tx:#efeae2;--mu:#a39a8d;--ac:#4fd1c5;--ac2:#1c2e2c;--ln:#332e26}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 Georgia,'Times New Roman',serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--sf);border-bottom:1px solid var(--ln);z-index:5}
+.hd{display:flex;align-items:center;gap:10px;padding:10px 16px;max-width:1000px;margin:auto}.hd b{font-size:18px;white-space:nowrap}.hd input{flex:1;min-width:0;padding:8px 12px;border:1px solid var(--ln);border-radius:20px;background:var(--bg);color:var(--tx);font:14px system-ui}
+.tabs{display:flex;gap:2px;overflow-x:auto;padding:0 12px;max-width:1000px;margin:auto;scrollbar-width:none}.tabs a{padding:9px 13px;font:14px system-ui;color:var(--mu);text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent}.tabs a.on{color:var(--ac);border-color:var(--ac);font-weight:600}
+main{max-width:1000px;margin:auto;padding:18px 16px 60px;font-family:system-ui,sans-serif;font-size:15px}
+h1,h2,h3{font-family:Georgia,serif;margin:.4em 0}.box{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:16px;margin:0 0 14px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}.n{font:700 26px Georgia}.l{color:var(--mu);font-size:12px}
+.b{border:0;border-radius:20px;padding:9px 16px;margin:3px 4px 3px 0;background:var(--ac);color:var(--sf);cursor:pointer;font:600 14px system-ui}.b.o{background:none;color:var(--ac);border:1px solid var(--ac)}.b.r{background:var(--no);color:#fff}
+.pb{height:7px;border-radius:7px;background:var(--ln);overflow:hidden;margin:6px 0}.pb i{display:block;height:100%;background:var(--ac)}
+.tag{display:inline-block;font-size:11px;background:var(--ac2);color:var(--ac);border-radius:6px;padding:2px 8px;margin:0 4px 4px 0}
+.src{font-size:12px;color:var(--mu)}.sc{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:6px 9px;border-bottom:1px solid var(--ln);text-align:left}th{background:var(--ac2)}
+details{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:9px 13px;margin-bottom:8px}summary{cursor:pointer;font-weight:600}
+.ch{display:block;width:100%;text-align:left;padding:12px;margin:6px 0;border:1px solid var(--ln);border-radius:10px;background:var(--sf);color:var(--tx);font:inherit;cursor:pointer}.ch.s{border-color:var(--ac)}.ch.ok{background:rgba(43,138,62,.17);border-color:var(--ok)}.ch.bad{background:rgba(201,42,42,.14);border-color:var(--no)}
+.card{min-height:200px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:18px;padding:22px;cursor:pointer;background:var(--sf);border:2px solid var(--ln);border-radius:18px;margin:12px 0}
+.path{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;margin-bottom:12px}.path span{background:var(--ac2);color:var(--ac);padding:3px 10px;border-radius:12px}
+mark{background:#ffe066;color:#222}select,input[type=number],input[type=text]{padding:8px;border:1px solid var(--ln);border-radius:8px;background:var(--sf);color:var(--tx);font:inherit}
+@media(max-width:600px){.hd b{display:none}main{padding:12px}.card{font-size:16px}}
+</style></head><body>
+<header><div class="hd"><b>⚗️ Enzymes</b><input id="s" placeholder="Search everything…"></div><div class="tabs" id="tabs"></div></header>
+<main><div class="path"><span>Learn</span><span>Understand</span><span>Flashcards</span><span>Quiz</span><span>Review mistakes</span><span>Quick Reference</span><span>Retake</span></div><div id="out"></div></main>
+<script>
+(()=>{
+const D=[
+["Enzyme Basics","Slides 1–4","What enzymes are and why they are needed.",[
+["Enzymes","Globular proteins that catalyse chemical reactions in living organisms."],
+["Properties of enzymes","Specific; increase the rate of the reaction; unchanged at the end of the reaction."],
+["Why enzymes are needed","Reactions would be too slow to maintain life, and temperatures/pressure in cells cannot be increased (fatal)."],
+["Enzymes are proteins","With the exception of a few catalytic RNAs (ex. ribozymes), all known enzymes are proteins."],
+["Active site","A pocket formed by the folding of the protein where substrates bind. It involves a small number of key residues that actually bind the substrates; the rest of the protein structure is needed to maintain these residues in position."]]],
+["How Enzymes Work","Slides 5–12","E + S → ES → EP → E + P, specificity, example.",[
+["E, S, P","E = enzyme; S = substrate (the molecule bound in the active site and acted upon by the enzyme); P = product. Sequence: E+S → ES → EP → E+P."],
+["Substrate specificity","Enzymes are specific to the reactant they act on (the substrate). The specificity is due to the shape of the enzyme."],
+["Enzyme-substrate complex","Enzymes bind the substrate at the active site, forming an enzyme-substrate complex. While joined, the catalytic action converts reactant(s) to product(s)."],
+["Binding in the active site","Most often substrate and enzyme are held together by hydrogen bonds. The active site is made of R groups (providing the specificity). After the reaction the bond is broken and the enzyme can catalyze another reaction."],
+["Example","Sucrose + H2O (substrates) → Glucose + Fructose (products)."]]],
+["Activation Energy & Catalysts","Slides 13–23","Why enzymes speed reactions.",[
+["Collision requirement","For sucrose and water to react they must collide with enough energy to break and form bonds."],
+["Activation energy","The minimum amount of energy needed to start the reaction, leading to the formation of a high energy intermediate."],
+["Enzymes lower the barrier","Enzymes reduce the height of the energy barrier between substrates and products."],
+["Catalysts","Modify the rate of the reaction by providing an alternative reaction pathway that requires less energy than the uncatalyzed reaction."]]],
+["Cofactors","Slide 24","Nonprotein components of enzymes.",[
+["Cofactor","The nonprotein component of an enzyme required for catalysis. (Some enzymes depend only on active site amino acids and the substrate; others require nonprotein components.)"],
+["Coenzyme","A small organic molecule required in the catalytic mechanisms of certain enzymes."],
+["Apoenzyme","The protein component of an enzyme that lacks an essential cofactor."],
+["Holoenzyme","Intact enzyme with its bound cofactors."]]],
+["Classification of Enzymes","Slides 25–26","Grouped by kind of reaction catalyzed, not by structure.",[
+["Basis of classification","Enzymes are usually grouped according to the kind of reaction they catalyze, not by their structures."],
+["1. Hydrolases","Catalyze substrate hydrolysis (addition of a water molecule to a bond causing the bond to break)."],
+["2. Isomerases","Catalyze conversion of a substrate into another compound isomeric with it; intramolecular rearrangement."],
+["3. Ligases","Catalyze the bonding together of 2 substrate molecules with the participation of ATP."],
+["4. Lyases","Catalyze addition of a group to a double bond, or removal of a group to create a double bond, without hydrolysis."],
+["5. Oxidoreductases","Catalyze oxidation-reduction reactions involving substrate molecules."],
+["6. Transferases","Catalyze the transfer of functional groups between 2 substrates."]],
+{h:["Main class","Some subclasses","Type of reaction catalyzed"],r:[["Hydrolases","Lipases; Nucleases; Proteases","Hydrolysis of an ester group; a phosphate group; an amide group"],["Isomerases","Epimerases","Isomerization of a chirality center"],["Ligases","Carboxylases; Synthetases","Addition of CO2; Formation of new bond"],["Lyases","Decarboxylases; Dehydratases","Loss of CO2; Loss of H2O"],["Oxidoreductases","Dehydrogenases; Oxidases; Reductases","Introduction of double bond by removal of H2; Oxidation; Reduction"],["Transferases","Kinases; Transaminases","Transfer of a phosphate group; Transfer of an amino group"]]}],
+["Enzyme Activity & Factors","Slides 27–28","Measuring activity and what affects it.",[
+["Enzyme activity","A measure of the rate at which an enzyme converts substrate to product. Used because the amount of enzyme in solution is often not known."],
+["Measuring rate","Measured by the amount of reactant used up or the amount of product formed."],
+["Vmax","Under ideal conditions (which are variable) there is a maximum rate of reaction, called Vmax. With constant enzyme and substrate, the rate is highest at the beginning."],
+["Variables affecting activity","1. Temperature; 2. pH; 3. Substrate concentration."],
+["Optimum conditions","Enzymes function best (are most active) in specific conditions known as optimum conditions."]]],
+["Temperature","Slides 29–31","Effect of temperature.",[
+["Effect of increased temperature","More energetic collisions; number of collisions per unit time increases; heat of the molecules increases. These all decrease the energy of activation and speed up the reaction."],
+["Temperature optimum","Each enzyme has a temperature range in which a maximal rate of reaction is achieved; this maximum is the temperature optimum. (Graph: rate peaks at optimum between low and high temperature.)"],
+["Examples of different optima","Enzyme in cold water shrimp; enzyme in a bacterium living in a hot spring; digestive enzyme in human."]]],
+["pH","Slides 32–34","Effect of pH.",[
+["Optimum pH","Each enzyme has an optimal pH, so the effect depends on the enzyme."],
+["Extremes of pH","Extremes of pH can denature enzymes because tertiary bonds change. Side chains contain groups such as –COOH and NH2 that readily gain or lose H+."],
+["Lowering pH","The enzyme tends to gain H+ ions; eventually enough side chains are affected that the shape is disrupted."],
+["Raising pH","The enzyme loses H+ ions and eventually loses its active shape."],
+["Neutral range","Many enzymes function properly in the neutral pH range and are denatured at extremely high or low pH."],
+["Pepsin vs trypsin","Two proteases working in different parts of the body. Pepsin works in the stomach (very acidic); trypsin works in the small intestine (slightly alkaline)."]]],
+["Substrate Concentration","Slides 35–37","Effect of substrate and enzyme amount.",[
+["Substrate effect","As substrate concentration increases, rate increases proportionally until all enzymes are saturated, then it levels off (maximum activity)."],
+["Why","Increasing substrate increases collisions, assuming enough enzyme is present."],
+["Enzyme amount","Increasing enzyme also increases rate, but limited by substrate. Enzyme is reused; substrate is not."],
+["Saturation","Once all enzymes are occupied, increasing substrate no longer affects the rate."]]],
+["Models of Enzyme Action","Slides 38–42","Lock-and-key and induced-fit.",[
+["Two models","1. Lock-and-Key Model; 2. Induced-Fit Model."],
+["Lock-and-Key","Enzyme is like a key fitting a lock; the shapes are fixed. An enzyme acts on only one type of substrate, so it is SPECIFIC. The shape of the active site (binding site) matches the shape of the substrate."],
+["Lock-and-Key steps","Enzyme binds substrate at the active site; only certain substrates fit; R groups in the active site help substrate bind; enzyme-substrate complex forms; substrate reacts to form product; product is released. E + S → ES complex → E + P."],
+["Induced Fit","The substrate does not simply bind the active site; it brings about changes in the shape of the active site to activate the enzyme. The active site slightly changes or moulds itself around the substrate; this adjustment triggers catalysis and helps explain why enzymes catalyse only specific reactions. Enzymes can form to the shape of the substrate."]]],
+["Enzyme Inhibition","Slides 43–51","Inhibitor types.",[
+["Inhibitors","Chemicals that reduce the rate of enzymic reactions. Usually specific, work at low concentrations, block the enzyme but do not usually destroy it. Many drugs and poisons are inhibitors of enzymes in the nervous system."],
+["Irreversible inhibitors","Combine (bond covalently) with functional groups of amino acids in the active site, irreversibly."],
+["Reversible inhibitors","Can be washed out of the enzyme solution by dialysis; dissociate because they bind through noncovalent bonds."],
+["Competitive inhibitors","Compete for the active site; similar shape to the substrate and block the active site. Effect is lessened by adding more substrate; given enough substrate the reaction can reach its maximum rate."],
+["Non-competitive inhibitors","Bind somewhere other than the active site and alter the shape of the enzyme. Adding more substrate does not affect the rate. Examples: metals such as mercury, copper, silver inhibit many enzymes because they break disulfide bridges."],
+["Mixed inhibitor","Also binds at a site distinct from the active site, but binds either E or ES. Binding at a distal site causes an allosteric conformational change in tertiary structure, reducing affinity for substrate."]]],
+["Regulation","Slides 52–58","Allosteric and feedback regulation.",[
+["Allosteric regulation","Any form of regulation where the regulatory molecule (activator or inhibitor) binds to an enzyme someplace other than the active site. The place where the regulator binds is the allosteric site."],
+["Feedback inhibition","Negative feedback regulation: the end product of a metabolic pathway acts on the key enzyme regulating entry to that pathway, keeping more end product from being produced. An enzyme early in the pathway is inhibited by a late product."],
+["Positive feedback regulation","A product stimulates the activity of an enzyme."],
+["Feed-forward regulation","A substrate produced early in a pathway activates an enzyme downstream in the same pathway."]]],
+["Enzymes in Biotechnology","Slides 59–62","Applications.",[
+["Biological washing powders","Contain enzymes; act on certain stains: proteases for blood and grass stains; lipases for oils and fats. Make detergent more effective and more efficient (use less)."],
+["Lactose-free milk: the problem","Lactose is a disaccharide in milk. 70% of adults can't break it down, so it builds up in the intestine (only monosaccharides can be absorbed). Gut bacteria can switch to lactose by turning on the lactase gene, producing hydrogen gas and intestinal symptoms."],
+["Lactose-free milk: production","Milk is passed over lactase bound to an inert carrier; lactose is converted to glucose and galactose, which can be absorbed. Most milk is low in lactose; some has none (from plant sources like soy). Milk can also be treated with a bacterium like acidophilus, used in yogurt making."],
+["Fruit juice (pectinases)","Pectinases increase juice yield and clarity. Pectin is a large polysaccharide in the cell wall; the enzymes hydrolyze pectins. Pectinase is extracted from the fungus Aspergillus niger, which uses it to soften cell walls so hyphae can grow through them."],
+["Other examples","Tenderizing meat with papain (a protease from papaya); conversion of starch into sugar in brewing using amyloglucosidase."]]]];
+const Q=[
+[0,"Enzymes are best described as:",["Globular proteins that catalyse reactions","Lipids that store energy","Nucleic acids only","Fibrous structural proteins"],0,"E"],
+[0,"Besides proteins, which catalytic molecules are mentioned as exceptions?",["Ribozymes (catalytic RNAs)","Lipoproteins","Glycogen","Cofactors"],0,"M"],
+[0,"The active site is:",["The whole protein","A pocket formed by protein folding where substrates bind","A cofactor","A product"],1,"E"],
+[1,"What does ES stand for in E+S → ES → EP → E+P?",["Enzyme-substrate complex","Energy source","Enzyme solution","End substrate"],0,"E"],
+[1,"Enzyme specificity is due to:",["Temperature","The shape of the enzyme","The product","pH only"],1,"M"],
+[1,"Which bonds most often hold substrate and enzyme together?",["Hydrogen bonds","Peptide bonds","Disulfide bonds","Ionic crystals"],0,"M"],
+[2,"Activation energy is:",["The maximum energy of the product","The minimum energy needed to start the reaction, forming a high energy intermediate","The energy released","Enzyme concentration"],1,"E"],
+[2,"Enzymes speed reactions by:",["Raising temperature","Reducing the height of the energy barrier","Being used up","Adding products"],1,"M"],
+[3,"The protein component of an enzyme lacking an essential cofactor is the:",["Holoenzyme","Coenzyme","Apoenzyme","Substrate"],2,"M"],
+[3,"An intact enzyme with its bound cofactor is a:",["Holoenzyme","Apoenzyme","Inhibitor","Isomerase"],0,"E"],
+[3,"A small organic molecule required in the catalytic mechanism of certain enzymes is a:",["Apoenzyme","Coenzyme","Lyase","Product"],1,"M"],
+[4,"Enzymes are usually classified by:",["Structure","Kind of reaction catalyzed","Size","Source organism"],1,"E"],
+[4,"Which class bonds two substrates together with the participation of ATP?",["Ligases","Lyases","Hydrolases","Transferases"],0,"M"],
+[4,"Transferases catalyze:",["Hydrolysis","Transfer of functional groups between 2 substrates","Isomerization","Oxidation-reduction"],1,"M"],
+[4,"Kinases (transfer of a phosphate group) belong to which class?",["Transferases","Ligases","Isomerases","Hydrolases"],0,"D"],
+[4,"Proteases, lipases and nucleases are subclasses of:",["Hydrolases","Lyases","Ligases","Oxidoreductases"],0,"D"],
+[5,"Vmax is:",["The minimum rate","The maximum rate of reaction under ideal conditions","The substrate amount","The optimum pH"],1,"E"],
+[5,"Three variables affecting enzyme activity are:",["Temperature, pH, substrate concentration","Color, size, shape","Light, sound, heat","Mass, volume, density"],0,"E"],
+[6,"The temperature at which an enzyme achieves maximal rate is its:",["Temperature optimum","Vmax","Activation energy","Cofactor"],0,"E"],
+[7,"Pepsin works best in the:",["Stomach (very acidic)","Small intestine","Mouth","Blood"],0,"M"],
+[7,"Why can extreme pH denature enzymes?",["Tertiary bonds change as side chains gain/lose H+","The substrate disappears","The enzyme is consumed","DNA changes"],0,"D"],
+[8,"At high substrate concentration, the rate levels off because:",["Substrate is destroyed","All enzymes are saturated","Temperature drops","pH rises"],1,"M"],
+[8,"True or false: substrate is reused but enzyme is not.",["True","False"],1,"M"],
+[9,"Which model says active site shape is fixed, like a key in a lock?",["Lock-and-Key","Induced-Fit","Feed-forward","Allosteric"],0,"E"],
+[9,"In the induced-fit model the active site:",["Never changes","Slightly moulds around the substrate","Is destroyed","Is a cofactor"],1,"M"],
+[10,"Competitive inhibitors can be overcome by:",["Adding more substrate","Adding more inhibitor","Lowering pH","Heating"],0,"M"],
+[10,"Non-competitive inhibitors bind:",["At the active site","Somewhere other than the active site","Only to products","Only to DNA"],1,"M"],
+[10,"Mercury, copper and silver inhibit enzymes because they:",["Break disulfide bridges","Add water","Raise pH","Act as substrates"],0,"D"],
+[10,"Irreversible inhibitors bond to the active site:",["Covalently","Noncovalently","Through dialysis","Not at all"],0,"M"],
+[10,"Reversible inhibitors can be removed by:",["Dialysis","Covalent bonding","Mercury","Hydrolysis"],0,"D"],
+[11,"In feedback inhibition, the inhibitor is the:",["Late/end product of the pathway","First substrate","Cofactor","Solvent"],0,"M"],
+[11,"A substrate produced early in a pathway activating a downstream enzyme is:",["Feed-forward regulation","Feedback inhibition","Competitive inhibition","Denaturation"],0,"D"],
+[12,"Which enzymes remove blood and grass stains in washing powders?",["Proteases","Lipases","Lactase","Pectinases"],0,"M"],
+[12,"Lactase converts lactose into:",["Glucose and galactose","Glucose and fructose","Starch","Pectin"],0,"M"],
+[12,"Pectinase for fruit juice is extracted from:",["Aspergillus niger","Papaya","Soy","Acidophilus"],0,"D"]];
+const DN={E:"Easy",M:"Medium",D:"Difficult"};
+const store={d:{v:{},qa:{},f:{},sc:[]},load(){try{Object.assign(this.d,JSON.parse(localStorage.getItem("enz")||"{}"))}catch(e){}},save(){try{localStorage.setItem("enz",JSON.stringify(this.d))}catch(e){}},reset(){this.d={v:{},qa:{},f:{},sc:[]};try{localStorage.removeItem("enz")}catch(e){}}};store.load();
+const $=s=>document.querySelector(s),out=$("#out");
+const cards=D.flatMap((t,i)=>t[3].map((c,j)=>({k:i+"-"+j,t:i,q:c[0],a:c[1]})));
+const tprog=i=>Math.round((store.d.v[i]?50:0)+t4(i)*50),t4=i=>D[i][3].filter((_,j)=>store.d.f[i+"-"+j]=="k").length/D[i][3].length;
+const bar=p=>`<div class="pb"><i style="width:${p}%"></i></div>`;
+const tbl=t=>t[4]?`<div class="sc"><table><tr>${t[4].h.map(h=>`<th>${h}</th>`).join("")}</tr>${t[4].r.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</table></div>`:"";
+const weak=()=>D.map((_,i)=>i).filter(i=>{const a=store.d.qa[i];return a&&a.w&&a.c/(a.c+a.w)<.7});
+const tot=()=>{let c=0,w=0;Object.values(store.d.qa).forEach(a=>{c+=a.c;w+=a.w});return{c,w}};
+const V={
+dash(){const s=tot(),vc=Object.keys(store.d.v).length,k=Object.values(store.d.f).filter(x=>x=="k").length,p=Math.round((vc/D.length+k/cards.length)*50);
+return`<h1>Dashboard</h1><div class="row">${[["Topics",D.length],["Concepts",cards.length],["Quiz questions",Q.length],["Flashcards",cards.length],["Progress",p+"%"],["Answered",s.c+s.w],["Correct",s.c],["Incorrect",s.w],["Reviewed",vc+"/"+D.length]].map(x=>`<div class="box"><div class="n">${x[1]}</div><div class="l">${x[0]}</div></div>`).join("")}</div>${bar(p)}<p><a href="#topic/${Math.min(vc,D.length-1)}"><button class="b">Continue Studying</button></a><a href="#quiz"><button class="b">Take a Quiz</button></a><a href="#cards"><button class="b">Review Flashcards</button></a><a href="#quick"><button class="b o">Quick Reference</button></a></p><div class="box"><b>Weak topics:</b> ${weak().map(i=>`<span class="tag">${D[i][0]}</span>`).join("")||"<span class='src'>none yet</span>"}</div><div class="box"><b>Recently studied:</b> ${(store.d.h||[]).slice(-5).reverse().map(i=>`<a class="tag" href="#topic/${i}">${D[i][0]}</a>`).join("")||"<span class='src'>nothing yet</span>"}</div><p class="src">Source: enzymes lecture slides (uploaded). Content is drawn only from that file.</p>`},
+full(){D.forEach((_,i)=>store.d.v[i]=1);store.save();return"<h1>Full Reviewer</h1>"+D.map(t=>`<div class="box"><h2>${t[0]}</h2><div class="src">Source Section: ${t[1]}</div><p>${t[2]}</p>${t[3].map(c=>`<p><b>${c[0]}.</b> ${c[1]}</p>`).join("")}${tbl(t)}</div>`).join("")},
+topics(){return"<h1>Topics</h1>"+D.map((t,i)=>`<div class="box"><h3>${t[0]}</h3><p>${t[2]}</p><span class="tag">${t[3].length} concepts</span><span class="tag">${Q.filter(q=>q[0]==i).length} questions</span><span class="tag">${t[3].length} flashcards</span>${bar(tprog(i))}<a href="#topic/${i}"><button class="b">Open</button></a><a href="#cards/${i}"><button class="b o">Flashcards</button></a></div>`).join("")},
+topic(i){i=+i;const t=D[i];store.d.v[i]=1;store.d.h=(store.d.h||[]).filter(x=>x!=i).concat(i);store.save();return`<a href="#topics"><button class="b o">← All topics</button></a><div class="box"><h2>${t[0]}</h2><div class="src">Source Section: ${t[1]}</div>${t[3].map(c=>`<p><b>${c[0]}.</b> ${c[1]}</p>`).join("")}${tbl(t)}</div><a href="#cards/${i}"><button class="b">Flashcards</button></a><a href="#quiz/${i}"><button class="b">Quiz this topic</button></a>`},
+expl(){return"<h1>Explanations</h1><p class='src'>Tap to expand.</p>"+D.map(t=>`<h3>${t[0]}</h3>`+t[3].map(c=>`<details><summary>${c[0]}</summary><p><b>What it is / means:</b> ${c[1]}</p><p class="src">Source Section: ${t[1]}</p></details>`).join("")).join("")},
+quick(){return"<h1>Quick Reference</h1>"+D.map(t=>`<h3>${t[0]}</h3><div class="row" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">${t[3].map(c=>`<div class="box" style="font-size:13px;margin:0"><mark>${c[0]}</mark><br>${c[1]}</div>`).join("")}</div>${tbl(t)}`).join("")},
+prog(){const s=tot(),k=Object.values(store.d.f).filter(x=>x=="k").length,r=Object.values(store.d.f).filter(x=>x=="r").length,vc=Object.keys(store.d.v).length;
+return`<h1>Progress</h1><div class="box"><p>Topics viewed ${vc}/${D.length}</p>${bar(vc/D.length*100)}<p>Flashcards known ${k}/${cards.length} · need review ${r}</p>${bar(k/cards.length*100)}<p>Quiz accuracy ${s.c+s.w?Math.round(s.c/(s.c+s.w)*100):0}% (${s.c} correct / ${s.w} incorrect)</p>${bar(s.c+s.w?s.c/(s.c+s.w)*100:0)}<p>Recent scores: ${(store.d.sc||[]).slice(-8).map(x=>x+"%").join(", ")||"none"}</p></div>${D.map((t,i)=>`<div class="box">${t[0]} — ${tprog(i)}%${bar(tprog(i))}</div>`).join("")}<button class="b o" id="rs">Reset progress</button>`}
+};
+/* flashcards */
+let F={g:"all",i:0,f:0};
+V.cards=g=>{if(g!==undefined&&g!=="")F={g:g,i:0,f:0};const d=F.g=="all"?cards:cards.filter(c=>c.t==F.g);const c=d[F.i%d.length],m=store.d.f[c.k];
+return`<h1>Flashcards</h1><select id="fg"><option value="all">All Flashcards</option>${D.map((t,i)=>`<option value="${i}" ${F.g==i?"selected":""}>${t[0]}</option>`).join("")}</select> <span class="tag">${F.i%d.length+1}/${d.length}</span><span class="tag">${m=="k"?"Known":m=="r"?"Need review":"Unmarked"}</span><div class="card" id="fl">${F.f?c.a:"<div>What is / describe:<br><b>"+c.q+"</b></div>"}</div><button class="b o" data-a="p">Previous</button><button class="b o" data-a="n">Next</button><button class="b o" data-a="s">Shuffle</button><button class="b" data-a="k">Mark as Known</button><button class="b r" data-a="r">Need Review</button>`};
+/* quiz */
+let Z=null;
+V.quiz=t=>{if(Z)return zr();if(t!==undefined&&t!=="")return zs("t",+t,5);return`<h1>Quiz</h1><div class="box"><p>Mode <select id="qm"><option value="a">All Topics</option><option value="w">Weak Topics</option><option value="r">Random Quiz</option>${D.map((t,i)=>`<option value="${i}">Topic: ${t[0]}</option>`).join("")}</select></p><p>Questions <select id="qn"><option>5</option><option>10</option><option>20</option><option>30</option><option value="c">Custom</option></select> <input type="number" id="qc" value="7" min="1" max="${Q.length}" style="width:70px"></p><button class="b" id="qg">Start</button></div>`};
+function zs(m,t,n){let p=Q.map((_,i)=>i);if(m=="t")p=p.filter(i=>Q[i][0]==t);if(m=="w"){const w=weak();const f=p.filter(i=>w.includes(Q[i][0]));if(f.length)p=f}if(!p.length)p=Q.map((_,i)=>i);p.sort(()=>Math.random()-.5);Z={p:p.slice(0,Math.max(1,n)),i:0,sel:null,done:0,res:[]};return zr()}
+function zr(){if(Z.i>=Z.p.length)return ze();const q=Q[Z.p[Z.i]];let h=`<h1>Quiz</h1>${bar(Z.i/Z.p.length*100)}<div class="box"><span class="tag">${D[q[0]][0]}</span><span class="tag">${DN[q[4]]}</span><span class="tag">${Z.i+1}/${Z.p.length}</span><h3>${q[1]}</h3>`;
+q[2].forEach((o,j)=>{let c="ch";if(Z.done){if(j==q[3])c+=" ok";else if(j==Z.sel)c+=" bad"}else if(j==Z.sel)c+=" s";h+=`<button class="${c}" data-o="${j}">${o}</button>`});
+if(Z.done)h+=`<p><b>${Z.sel==q[3]?"Correct.":"Incorrect."}</b> Answer: ${q[2][q[3]]}. <span class="src">Review: ${D[q[0]][0]} (${D[q[0]][1]})</span></p><button class="b" data-z="n">Next</button>`;else h+=`<button class="b" data-z="c">Check answer</button>`;return h+"</div>"}
+function ze(){const c=Z.res.filter(x=>x[1]).length,n=Z.res.length,bad=Z.res.filter(x=>!x[1]),bt=[...new Set(bad.map(x=>Q[x[0]][0]))];(store.d.sc=store.d.sc||[]).push(Math.round(c/n*100));store.save();
+return`<h1>Results</h1><div class="box"><div class="n">${c}/${n} · ${Math.round(c/n*100)}%</div><p>Correct ${c} · Incorrect ${n-c}</p><p>Needs improvement: ${bt.map(i=>`<span class="tag">${D[i][0]}</span>`).join("")||"none"}</p></div>${bad.map(x=>`<div class="box"><b>${Q[x[0]][1]}</b><br>Answer: ${Q[x[0]][2][Q[x[0]][3]]}</div>`).join("")}<button class="b" id="qa">New quiz</button>`}
+/* search */
+V.find=v=>{const re=new RegExp("("+v.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig");let h="";D.forEach(t=>t[3].forEach(c=>{if((c[0]+c[1]).toLowerCase().includes(v))h+=`<div class="box"><span class="tag">Reviewer / Flashcards / Quick Ref</span><span class="tag">${t[0]}</span><br><b>${c[0].replace(re,"<mark>$1</mark>")}</b><br>${c[1].replace(re,"<mark>$1</mark>")}</div>`}));Q.forEach(q=>{if((q[1]+q[2].join(" ")).toLowerCase().includes(v))h+=`<div class="box"><span class="tag">Quiz question</span><span class="tag">${D[q[0]][0]}</span><br>${q[1].replace(re,"<mark>$1</mark>")}</div>`});D.forEach(t=>{if(t[4]&&JSON.stringify(t[4].r).toLowerCase().includes(v))h+=`<div class="box"><span class="tag">Classification table</span> ${t[0]}</div>`});return`<h1>Search: ${v}</h1>`+(h||"<p>No results.</p>")};
+const NAV=[["dash","Dashboard"],["full","Full Reviewer"],["topics","Topics"],["expl","Explanations"],["quiz","Quiz"],["cards","Flashcards"],["quick","Quick Reference"],["prog","Progress"]];
+function route(){let[h,a]=(location.hash.slice(1)||"dash").split("/");if(h!="quiz")Z=Z;const key=h=="topic"?"topics":h;$("#tabs").innerHTML=NAV.map(n=>`<a href="#${n[0]}" class="${n[0]==key?"on":""}">${n[1]}</a>`).join("");if(!V[h])h="dash";out.innerHTML=V[h](a);scrollTo(0,0)}
+addEventListener("hashchange",()=>{if(location.hash.startsWith("#quiz"))Z=null;route()});
+const re=()=>{const[h]=(location.hash.slice(1)||"dash").split("/");out.innerHTML=V[h]();};
+document.addEventListener("click",e=>{const t=e.target.closest("button,.card");if(!t)return;const d=(F.g=="all"?cards:cards.filter(c=>c.t==F.g));
+if(t.id=="fl"){F.f^=1;out.innerHTML=V.cards()}
+else if(t.dataset.a){const a=t.dataset.a,c=d[F.i%d.length];if(a=="p")F.i=(F.i-1+d.length)%d.length;if(a=="n")F.i++;if(a=="s")F.i=Math.floor(Math.random()*d.length);if(a=="k"||a=="r"){store.d.f[c.k]=a;store.save();F.i++}F.f=0;out.innerHTML=V.cards()}
+else if(t.id=="qg"){const m=$("#qm").value;let n=$("#qn").value;n=n=="c"?+$("#qc").value:+n;out.innerHTML=/^\d+$/.test(m)?zs("t",+m,n):zs(m,0,n)}
+else if(t.id=="qa"){Z=null;out.innerHTML=V.quiz()}
+else if(t.dataset.o!==undefined&&Z&&!Z.done){Z.sel=+t.dataset.o;out.innerHTML=zr()}
+else if(t.dataset.z=="c"&&Z.sel!==null){const q=Z.p[Z.i],ok=Z.sel==Q[q][3],a=store.d.qa[Q[q][0]]||(store.d.qa[Q[q][0]]={c:0,w:0});ok?a.c++:a.w++;Z.res.push([q,ok]);Z.done=1;store.save();out.innerHTML=zr()}
+else if(t.dataset.z=="n"){Z.i++;Z.sel=null;Z.done=0;out.innerHTML=zr()}
+else if(t.id=="rs"){if(!t.dataset.c){t.dataset.c=1;t.textContent="Tap again to confirm reset";t.classList.add("r");setTimeout(()=>{if(t.isConnected){delete t.dataset.c;t.textContent="Reset progress";t.classList.remove("r")}},4000)}else{store.reset();Z=null;F={g:"all",i:0,f:0};out.innerHTML=V.prog()}}});
+document.addEventListener("change",e=>{if(e.target.id=="fg"){F={g:e.target.value,i:0,f:0};out.innerHTML=V.cards()}});
+$("#s").addEventListener("input",e=>{const v=e.target.value.trim().toLowerCase();if(v.length<2)route();else out.innerHTML=V.find(v)});
+route();})();
+</script></body></html>
